@@ -35,11 +35,12 @@ class fips {
                 /^5\..*/: {
                     require fips::rhel5
                 }
-                default: { unimplemented() }
+                default: { fail "unimplemented on ${::osfamily} ${::operatingsystemrelease}" }
             }
         }
         'Darwin': {
             require fips::darwin
         }
+        default: { fail "unimplemented on ${::osfamily}" }
     }
 }
